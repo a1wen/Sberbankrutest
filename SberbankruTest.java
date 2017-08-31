@@ -21,11 +21,13 @@ public class SberbankruTest {
     MainPage mainpage;
     @Before
     public void setUp(){
+        //TODO Для запуска изменить путь к драйверу на ваш системный путь
         System.setProperty("webdriver.ie.driver", "C:\\Users\\a1wen\\Desktop\\example\\sbetTest\\drivers\\IEDriverServer.exe");
         driver = new InternetExplorerDriver();
         mainpage = new MainPage(driver);
         driver.get("sberbank.ru");
     }
+
     @Test
     public void testCheckRegion(){
         mainpage.regionListClick();
@@ -33,12 +35,8 @@ public class SberbankruTest {
         mainpage.assertRegion(expectedRegion);
         mainpage.scrollToFooter();
         mainpage.assertSocialButton();
-        /*WebElement searchRegion = driver.findElement(By.xpath("//input[@class='kit-input__control']"));
-        wait.until(ExpectedConditions.visibilityOf(searchRegion));
-        searchRegion.click();
-        searchRegion.clear();
-        searchRegion.sendKeys("ниж");*/
     }
+
     @After
     public void tearDown(){
         if(driver != null)
